@@ -5,8 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    src: '../../images/102.png',
+    region: ['北京', '北京', '昌平区'],
   },
+
+  bindRegionChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      region: e.detail.value
+    })
+  },
+
+  
 
   /**
    * 生命周期函数--监听页面加载

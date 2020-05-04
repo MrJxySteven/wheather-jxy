@@ -1,1 +1,29 @@
 /* pages/weather.wxss */
+
+.container {
+  height: 100vh;
+  padding: 20rpx 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.detail {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+} 
+
+.detail .bar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.detail .bar .box{
+  width: 33.3%;
+  text-align: center;
+}

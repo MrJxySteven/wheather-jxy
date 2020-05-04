@@ -5,8 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    src: '../../images/102.png',
+    src: '/images/999.png',
     region: ['北京', '北京', '昌平区'],
+    now:null
   },
 
   bindRegionChange: function (e) {
@@ -14,15 +15,35 @@ Page({
     this.setData({
       region: e.detail.value
     })
+    this.getWeater();  //更新天气
   },
 
-  
+  getWeater () {
+    let that = this
+    wx.request({
+      url: 'https://free-api.heweather.net/s6/weather/now', //仅为示例，并非真实的接口地址
+      data: {
+        location: this.data.region[1],
+        key:'dd2f215fa3854566af8e0963de1d481e'
+      },
+      success (res) {
+
+        let now = res.data.HeWeather6[0].now
+        that.setData({
+          src: `/images/${now.cond_code}.png`,
+          now: now
+        })
+      }
+    })
+  },
+
+
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getWeater()
   },
 
   /**
